@@ -1,0 +1,4 @@
+.fish {
+  display: flex;
+  flex-direction: column;
+}
