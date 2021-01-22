@@ -1,0 +1,10 @@
+.lifetime,
+.filler {
+  height: 5px;
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+}
+
+.lifetime {
+  width: 100%;
+}

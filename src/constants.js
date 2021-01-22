@@ -32,7 +32,7 @@ export const fish = species.slice(0, 15).map((s, i) => ({
   species: species[i],
   dob: new Date(),
   lifetime: {
-    value: 10,
-    unit: 'minutes', // seconds, minutes, hours, days, weeks, months, years
+    value: Math.round(Math.random() * 1000),
+    unit: 'seconds',
   },
 }));

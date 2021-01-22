@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Fish.module.css';
 import { fishPropType } from '../../types';
 import FishImage from '../FishImage/FishImage';
+import FishLifetime from '../FishLifetime/FishLifetime';
 
 const Fish = ({ fish }) => {
   const { id, name, species, dob, lifetime } = fish;
@@ -24,9 +25,14 @@ const Fish = ({ fish }) => {
           }).format(dob)}
         </div>
       </div>
-      {/* TODO: format lifetime as a progress bar */}
-      <div className={styles.lifetime}>
-        Lifetime: {lifetime.value} {lifetime.unit}
+      <div data-testid='fish-lifetime'>
+        <FishLifetime
+          dob={dob}
+          lifetime={lifetime}
+          onFlush={() =>
+            console.log('Flushed fish. RIP', { id, name, species })
+          }
+        />
       </div>
     </div>
   );

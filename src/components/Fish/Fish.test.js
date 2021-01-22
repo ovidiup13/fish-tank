@@ -8,8 +8,8 @@ const testFish = {
   species: 'Guppy',
   dob: new Date(),
   lifetime: {
-    value: 10,
-    unit: 'minutes',
+    value: 1,
+    unit: 'seconds',
   },
 };
 
@@ -19,6 +19,11 @@ describe('Fish', () => {
 
     expect(getByText(/Arnold/)).toBeInTheDocument();
     expect(getByText(/Guppy/)).toBeInTheDocument();
-    expect(getByText(/10 minutes/)).toBeInTheDocument();
+  });
+
+  test('displays the lifetime bar', () => {
+    const { getByTestId } = render(<Fish fish={testFish} />);
+
+    expect(getByTestId('fish-lifetime')).toBeInTheDocument();
   });
 });
