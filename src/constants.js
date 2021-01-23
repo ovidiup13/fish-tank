@@ -1,3 +1,5 @@
+export const CAPACITY = 15;
+
 export const species = [
   'Guppy',
   'Platy',
@@ -26,7 +28,7 @@ export const species = [
   'Barb',
 ];
 
-export const fish = species.slice(0, 15).map((s, i) => ({
+export const fish = species.slice(0, CAPACITY - 1).map((s, i) => ({
   id: i,
   name: species[i],
   species: species[i],
