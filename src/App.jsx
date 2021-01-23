@@ -1,6 +1,8 @@
-import './App.css';
+import React from 'react';
+
 import FishTank from './components/FishTank/FishTank';
 import { fish } from './constants';
+import './App.module.css';
 
 function App() {
   return (
