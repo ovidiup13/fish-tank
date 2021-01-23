@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import styles from './FishTank.module.css';
 
-import FishList from '../FishList/FishList';
-import AddFishButton from '../AddFishButton/AddFishButton';
+import FishList from '../../components/FishList/FishList';
+import AddFishButton from '../../components/AddFishButton/AddFishButton';
 import { CAPACITY } from '../../constants';
 import { fishPropType } from '../../types';
 
