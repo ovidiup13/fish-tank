@@ -1,0 +1,64 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.label {
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 5px;
+}
+
+.field {
+  border-radius: 5px;
+  border: 0.5px solid lightgray;
+  padding: 10px 15px;
+  height: 50px;
+  width: 100%;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+.field::-moz-focus-outer {
+  border: 0;
+}
+
+.field:focus {
+  border: 1px solid lightblue;
+}
+
+.lifetime {
+  display: flex;
+  flex-direction: row;
+}
+
+.lifetime > * {
+  width: 50%;
+}
+
+.lifetime_value {
+  margin-right: 10px;
+}
+
+.submit {
+  width: 100px;
+  align-self: center;
+}

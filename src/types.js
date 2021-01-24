@@ -1,18 +1,9 @@
 import PropTypes from 'prop-types';
-
-export const timeUnits = [
-  'seconds',
-  'minutes',
-  'hours',
-  'days',
-  'weeks',
-  'months',
-  'years',
-];
+import { TIME_UNITS } from './constants';
 
 export const lifetimePropType = PropTypes.exact({
   value: PropTypes.number.isRequired,
-  unit: PropTypes.oneOf(timeUnits).isRequired,
+  unit: PropTypes.oneOf(TIME_UNITS).isRequired,
 });
 
 export const fishPropType = PropTypes.exact({

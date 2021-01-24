@@ -6,6 +6,7 @@ import NotFound from './pages/NotFound/NotFound';
 import { fish } from './constants';
 
 import './App.module.css';
+import AddFish from './pages/AddFish/AddFish';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <FishTank fish={fish} />
+          </Route>
+          <Route exact path='/add-fish'>
+            <AddFish />
           </Route>
           <Route path='*'>
             <NotFound />

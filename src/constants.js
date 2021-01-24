@@ -1,6 +1,16 @@
 export const CAPACITY = 15;
 
-export const species = [
+export const TIME_UNITS = [
+  'seconds',
+  'minutes',
+  'hours',
+  'days',
+  'weeks',
+  'months',
+  'years',
+];
+
+export const SPECIES = [
   'Guppy',
   'Platy',
   'Molly',
@@ -28,13 +38,13 @@ export const species = [
   'Barb',
 ];
 
-export const fish = species.slice(0, CAPACITY - 1).map((s, i) => ({
+export const fish = SPECIES.slice(0, CAPACITY - 1).map((s, i) => ({
   id: i,
-  name: species[i],
-  species: species[i],
+  name: SPECIES[i],
+  species: SPECIES[i],
   dob: new Date(),
   lifetime: {
     value: Math.round(Math.random() * 1000),
-    unit: 'seconds',
+    unit: TIME_UNITS[0],
   },
 }));
