@@ -27,3 +27,5 @@ yarn-error.log*
 
 # ide
 .vscode
+
+!src/assets/icons
