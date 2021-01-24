@@ -4,14 +4,16 @@ import styles from './Fish.module.css';
 import { fishPropType } from '../../types';
 import FishImage from '../FishImage/FishImage';
 import FishLifetime from '../FishLifetime/FishLifetime';
+import dayjs from 'dayjs';
+import { DATE_FORMAT } from '../../constants';
 
 const Fish = ({ fish }) => {
-  const { id, name, species, dob, lifetime } = fish;
+  const { id, avatar, name, species, dob, lifetime } = fish;
   return (
     <div className={styles.fish_container} data-testid='fish-container'>
       <div className={styles.fish} data-testid='fish'>
         <div className={styles.fish_logo}>
-          <FishImage type={id} width={50} />
+          <FishImage type={avatar} width={50} />
         </div>
 
         <div className={styles.fish_details}>
@@ -19,10 +21,7 @@ const Fish = ({ fish }) => {
           <div className={styles.species}>{species}</div>
         </div>
         <div className={styles.dob}>
-          {new Intl.DateTimeFormat('en-GB', {
-            month: 'long',
-            day: '2-digit',
-          }).format(dob)}
+          {dayjs(dob).format(DATE_FORMAT).toString()}
         </div>
       </div>
       <div data-testid='fish-lifetime'>

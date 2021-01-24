@@ -6,14 +6,14 @@ import styles from './FishLifetime.module.css';
 const FishLifetime = ({ dob, lifetime, onFlush }) => {
   const [percentage, setPercentage] = useState(undefined);
 
-  const birthday = dayjs(dob);
-  const flushday = birthday.add(lifetime.value, lifetime.unit);
-  const total = flushday - birthday;
-
   useEffect(() => {
     // Set up an interval that calculates the health bar every 1 second.
     const intervalId = setInterval(() => {
+      const birthday = dayjs(dob);
+      const flushday = birthday.add(lifetime.value, lifetime.unit);
+      const total = flushday - birthday;
       const remaining = flushday - dayjs();
+
       const percent = Math.round((remaining * 100) / total);
       if (percent < 0) {
         onFlush();
@@ -21,11 +21,11 @@ const FishLifetime = ({ dob, lifetime, onFlush }) => {
       }
 
       setPercentage(percent);
-    }, 100);
+    }, 1000);
 
     // Clear the interval when the effect is cleaned up.
     return () => clearInterval(intervalId);
-  }, [flushday, total, onFlush]);
+  }, [dob, lifetime, onFlush]);
 
   return (
     <div className={styles.lifetime}>

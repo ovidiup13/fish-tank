@@ -8,8 +8,9 @@ export const lifetimePropType = PropTypes.exact({
 
 export const fishPropType = PropTypes.exact({
   id: PropTypes.number.isRequired,
+  avatar: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   species: PropTypes.string.isRequired,
-  dob: PropTypes.instanceOf(Date).isRequired,
+  dob: PropTypes.number.isRequired,
   lifetime: lifetimePropType,
 });

@@ -2,18 +2,23 @@ import React from 'react';
 import { Formik, Field, Form, useField, useFormikContext } from 'formik';
 import { enGB } from 'date-fns/locale';
 import { DatePicker } from 'react-nice-dates';
+import { useHistory } from 'react-router-dom';
 import classnames from 'classnames';
-import dayjs from 'dayjs';
 
-import { SPECIES, TIME_UNITS } from '../../constants';
+import Button from '../../components/Button/Button';
+import { DATE_FORMAT, SPECIES, TIME_UNITS } from '../../constants';
 import { capitalize } from '../../utils';
 
 import styles from './AddFish.module.css';
 import 'react-nice-dates/build/style.css';
 
-const DATE_FORMAT = 'DD/MM/YYYY';
+import dayjs from 'dayjs';
+var customParseFormat = require('dayjs/plugin/customParseFormat');
+dayjs.extend(customParseFormat);
 
-const AddFish = () => {
+const AddFish = ({ onFishAdded }) => {
+  const history = useHistory();
+
   const initialValues = {
     name: '',
     species: '',
@@ -24,7 +29,20 @@ const AddFish = () => {
 
   const onSubmit = async (values) => {
     await new Promise((r) => setTimeout(r, 500));
-    alert(JSON.stringify(values, null, 2));
+    onFishAdded({
+      // TODO: sort out a unique ID
+      id: Math.round(Math.random() * 10000000),
+      // TODO: allow a user to choose avatar
+      avatar: Math.floor(Math.random() * 25),
+      name: values.name,
+      species: values.species,
+      dob: dayjs(values.dob, DATE_FORMAT).unix() * 1000,
+      lifetime: {
+        value: values.lifetime,
+        unit: values.unit,
+      },
+    });
+    history.push('/');
   };
 
   return (
@@ -97,9 +115,9 @@ const AddFish = () => {
             </div>
           </div>
 
-          <button className={styles.submit} type='submit'>
+          <Button className={styles.submit} type='submit'>
             Submit
-          </button>
+          </Button>
         </Form>
       </Formik>
     </div>

@@ -1,4 +1,8 @@
+import dayjs from 'dayjs';
+
 export const CAPACITY = 15;
+
+export const DATE_FORMAT = 'DD/MM/YYYY';
 
 export const TIME_UNITS = [
   'seconds',
@@ -38,11 +42,12 @@ export const SPECIES = [
   'Barb',
 ];
 
-export const fish = SPECIES.slice(0, CAPACITY - 1).map((s, i) => ({
+export const INITIAL_FISH = SPECIES.slice(0, 1).map((s, i) => ({
   id: i,
+  avatar: Math.floor(Math.random() * 25),
   name: SPECIES[i],
   species: SPECIES[i],
-  dob: new Date(),
+  dob: dayjs().unix() * 1000,
   lifetime: {
     value: Math.round(Math.random() * 1000),
     unit: TIME_UNITS[0],
