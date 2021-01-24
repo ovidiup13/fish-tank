@@ -50,7 +50,7 @@ const AddFish = () => {
               Species
             </label>
             <Field
-              className={styles.field}
+              className={`${styles.field} ${styles.select}`}
               id='species'
               as='select'
               name='species'
@@ -82,7 +82,7 @@ const AddFish = () => {
                 name='lifetime'
               />
               <Field
-                className={styles.field}
+                className={`${styles.field} ${styles.select}`}
                 id='unit'
                 as='select'
                 name='unit'
