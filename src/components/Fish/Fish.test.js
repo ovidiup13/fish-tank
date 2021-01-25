@@ -1,17 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import Fish from './Fish';
+import { fishBuilder } from '../../helpers';
 
-const testFish = {
-  id: 0,
-  name: 'Arnold',
-  species: 'Guppy',
-  dob: new Date(),
-  lifetime: {
-    value: 1,
-    unit: 'seconds',
-  },
-};
+const testFish = fishBuilder({ name: 'Arnold' });
 
 describe('Fish', () => {
   test('displays a fish details', () => {

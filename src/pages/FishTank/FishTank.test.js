@@ -2,18 +2,7 @@ import React from 'react';
 import FishTank from './FishTank';
 import { render } from '@testing-library/react';
 import { CAPACITY } from '../../constants';
-
-const fishBuilder = (fish) => ({
-  id: 0,
-  name: 'Guppy',
-  species: 'Guppy',
-  dob: new Date(),
-  lifetime: {
-    value: 10,
-    unit: 'minutes',
-  },
-  ...fish,
-});
+import { fishBuilder } from '../../helpers';
 
 const testFish = [
   fishBuilder(),
