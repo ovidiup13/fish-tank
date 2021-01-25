@@ -21,7 +21,7 @@ const FishLifetime = ({ dob, lifetime, onFlush }) => {
       }
 
       setPercentage(percent);
-    }, 1000);
+    }, 500);
 
     // Clear the interval when the effect is cleaned up.
     return () => clearInterval(intervalId);

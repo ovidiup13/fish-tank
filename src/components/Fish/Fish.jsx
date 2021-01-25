@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styles from './Fish.module.css';
 import { fishPropType } from '../../types';
@@ -6,14 +6,22 @@ import FishImage from '../FishImage/FishImage';
 import FishLifetime from '../FishLifetime/FishLifetime';
 import dayjs from 'dayjs';
 import { DATE_FORMAT } from '../../constants';
+import classnames from 'classnames';
 
 const Fish = ({ fish }) => {
+  console.log('prop in fish', { fish });
   const { id, avatar, name, species, dob, lifetime } = fish;
+  const [alive, setAlive] = useState(true);
+
+  const className = classnames(styles.fish_container, {
+    [styles.dead]: !alive,
+  });
+
   return (
-    <div className={styles.fish_container} data-testid='fish-container'>
+    <div className={className} data-testid='fish-container'>
       <div className={styles.fish} data-testid='fish'>
         <div className={styles.fish_logo}>
-          <FishImage type={avatar} width={50} />
+          <FishImage type={avatar} alive={alive} width={50} height={50} />
         </div>
 
         <div className={styles.fish_details}>
@@ -24,14 +32,18 @@ const Fish = ({ fish }) => {
           {dayjs(dob).format(DATE_FORMAT).toString()}
         </div>
       </div>
+      {/* TODO: add flush day */}
       <div data-testid='fish-lifetime'>
-        <FishLifetime
-          dob={dob}
-          lifetime={lifetime}
-          onFlush={() =>
-            console.log('Flushed fish. RIP', { id, name, species })
-          }
-        />
+        {alive && (
+          <FishLifetime
+            dob={dob}
+            lifetime={lifetime}
+            onFlush={() => {
+              console.log('Flushed fish. RIP', { id, name, species });
+              setAlive(false);
+            }}
+          />
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-const FishImage = ({ type, ...props }) => {
+import { ReactComponent as DeadFish } from '../../assets/icons/dead.svg';
+
+const FishImage = ({ type, alive, ...props }) => {
   const [icon, setIcon] = useState(null);
 
   useEffect(() => {
@@ -11,7 +13,11 @@ const FishImage = ({ type, ...props }) => {
     ).then((data) => {
       setIcon(data);
     });
-  });
+  }, [type]);
+
+  if (!alive) {
+    return <DeadFish {...props} />;
+  }
 
   if (!icon) {
     return null;

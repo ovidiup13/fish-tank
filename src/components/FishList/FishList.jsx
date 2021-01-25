@@ -7,6 +7,7 @@ import { fishPropType } from '../../types';
 import styles from './FishList.module.css';
 
 const FishList = ({ fish }) => {
+  console.log('fish list', { fish });
   return (
     <div className={styles.fish_list} data-testid='fish-list'>
       {fish.map((f) => (

@@ -16,6 +16,14 @@
   cursor: pointer;
 }
 
+.dead {
+  background-color: lightgray;
+}
+
+.dead:hover {
+  box-shadow: none;
+}
+
 .fish {
   display: flex;
   flex-direction: row;
@@ -43,7 +51,7 @@
 
 .dob {
   font-size: 10px;
-  color: lightgray;
+  color: gray;
 }
 
 .lifetime {

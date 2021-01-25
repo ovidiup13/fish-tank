@@ -41,15 +41,3 @@ export const SPECIES = [
   'Rainbow Kribs',
   'Barb',
 ];
-
-export const INITIAL_FISH = SPECIES.slice(0, 1).map((s, i) => ({
-  id: i,
-  avatar: Math.floor(Math.random() * 25),
-  name: SPECIES[i],
-  species: SPECIES[i],
-  dob: dayjs().unix() * 1000,
-  lifetime: {
-    value: Math.round(Math.random() * 1000),
-    unit: TIME_UNITS[0],
-  },
-}));
