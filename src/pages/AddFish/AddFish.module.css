@@ -75,3 +75,8 @@
   width: 100px;
   align-self: center;
 }
+
+.error {
+  margin-top: 5px;
+  color: crimson;
+}
