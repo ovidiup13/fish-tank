@@ -27,11 +27,10 @@ const Fish = ({ fish, removeFish }) => {
 
   return (
     <div className={className} data-testid='fish-container'>
+      <div className={styles.avatar}>
+        <FishImage type={avatar} alive={alive} width={200} height={200} />
+      </div>
       <div className={styles.fish} data-testid='fish'>
-        <div className={styles.fish_logo}>
-          <FishImage type={avatar} alive={alive} width={50} height={50} />
-        </div>
-
         <div className={styles.fish_details}>
           <div className={styles.name}>{name}</div>
           <div className={styles.species}>{species}</div>
@@ -40,7 +39,6 @@ const Fish = ({ fish, removeFish }) => {
           {dayjs(dob).format(DATE_FORMAT).toString()}
         </div>
       </div>
-      {/* TODO: add flush day */}
       <div data-testid='fish-lifetime'>
         {alive && (
           <FishLifetime

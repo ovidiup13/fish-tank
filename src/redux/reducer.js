@@ -1,7 +1,8 @@
+import { load } from './persist';
 import { SPECIES } from '../constants';
 import dayjs from 'dayjs';
 
-const initialState = {
+const defaultState = {
   alive: SPECIES.slice(0, 5).map((s, i) => ({
     id: i,
     avatar: Math.floor(Math.random() * 25),
@@ -15,6 +16,8 @@ const initialState = {
   })),
   dead: [],
 };
+
+const initialState = load('fish', defaultState);
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

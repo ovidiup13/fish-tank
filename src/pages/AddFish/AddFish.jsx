@@ -78,7 +78,6 @@ const AddFish = ({ addFish }) => {
 
   return (
     <div className={styles.page}>
-      <h1>Add new fish</h1>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}

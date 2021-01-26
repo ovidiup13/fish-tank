@@ -3,6 +3,17 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
+}
+
+.button {
+  border-radius: 100%;
+  background-color: lightcoral;
+  opacity: 0.75;
+}
+
+.button:hover {
+  opacity: 1;
 }
 
 .text {

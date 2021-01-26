@@ -15,13 +15,13 @@ const FishLifetime = ({ dob, lifetime, onFlush }) => {
       const remaining = flushday - dayjs();
 
       const percent = Math.round((remaining * 100) / total);
+      setPercentage(percent);
+
       if (percent < 0) {
         onFlush();
         clearInterval(intervalId);
       }
-
-      setPercentage(percent);
-    }, 500);
+    }, 100);
 
     // Clear the interval when the effect is cleaned up.
     return () => clearInterval(intervalId);

@@ -14,11 +14,15 @@ const FishTank = ({ fish }) => {
 
   return (
     <div className={styles.tank}>
-      <h1 className={styles.tank_title}>My Fish Tank</h1>
       {isFull ? null : (
-        <div data-testid='add-fish-button'>
-          <AddFishButton />
-        </div>
+        <>
+          <div className={styles.add_fish} data-testid='add-fish-button'>
+            <AddFishButton />
+          </div>
+          {/* <div className={styles.tank_title}>
+            {`${fish.length} out of ${CAPACITY} fish`}
+          </div> */}
+        </>
       )}
       <div className={styles.fish_tank} data-testid='tank'>
         {fish.length === 0 ? (

@@ -13,11 +13,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.nice-dates-popover {
-  box-shadow: none;
-  border: 1px solid #ddd;
-  border-radius: 2px;
-  max-width: 500px;
-  transition: none;
-}
