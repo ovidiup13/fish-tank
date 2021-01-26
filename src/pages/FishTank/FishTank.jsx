@@ -7,6 +7,7 @@ import FishList from '../../components/FishList/FishList';
 import AddFishButton from '../../components/AddFishButton/AddFishButton';
 import { CAPACITY } from '../../constants';
 import { fishPropType } from '../../types';
+import { connect } from 'react-redux';
 
 const FishTank = ({ fish }) => {
   const isFull = fish.length === CAPACITY;
@@ -34,4 +35,6 @@ FishTank.propTypes = {
   fish: PropTypes.arrayOf(fishPropType),
 };
 
-export default FishTank;
+const mapStateToProps = ({ alive }) => ({ fish: alive });
+
+export default connect(mapStateToProps)(FishTank);

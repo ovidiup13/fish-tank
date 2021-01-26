@@ -5,6 +5,7 @@ import { enGB } from 'date-fns/locale';
 import { DatePicker } from 'react-nice-dates';
 import { useHistory } from 'react-router-dom';
 import classnames from 'classnames';
+import { connect } from 'react-redux';
 
 import Button from '../../components/Button/Button';
 import { DATE_FORMAT, SPECIES, TIME_UNITS } from '../../constants';
@@ -14,6 +15,7 @@ import styles from './AddFish.module.css';
 import 'react-nice-dates/build/style.css';
 
 import dayjs from 'dayjs';
+import { addFishAction } from '../../redux/actions';
 var customParseFormat = require('dayjs/plugin/customParseFormat');
 dayjs.extend(customParseFormat);
 
@@ -31,7 +33,7 @@ const AddFishSchema = Yup.object().shape({
   unit: Yup.string().required('Well... how many what?'),
 });
 
-const AddFish = ({ onFishAdded }) => {
+const AddFish = ({ addFish }) => {
   const history = useHistory();
 
   const initialValues = {
@@ -44,7 +46,8 @@ const AddFish = ({ onFishAdded }) => {
 
   const onSubmit = async (values) => {
     await new Promise((r) => setTimeout(r, 500));
-    onFishAdded({
+
+    addFish({
       // TODO: sort out a unique ID
       id: Math.round(Math.random() * 10000000),
       // TODO: allow a user to choose avatar
@@ -57,8 +60,8 @@ const AddFish = ({ onFishAdded }) => {
         value: values.lifetime,
         unit: values.unit,
       },
-      isAlive: true,
     });
+
     history.push('/');
   };
 
@@ -205,4 +208,8 @@ const Picker = (props) => {
   );
 };
 
-export default AddFish;
+const mapDispatchToProps = (dispatch) => ({
+  addFish: (fish) => dispatch(addFishAction(fish)),
+});
+
+export default connect(() => {}, mapDispatchToProps)(AddFish);

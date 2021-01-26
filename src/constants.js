@@ -1,5 +1,3 @@
-import dayjs from 'dayjs';
-
 export const CAPACITY = 15;
 
 export const DATE_FORMAT = 'DD/MM/YYYY';

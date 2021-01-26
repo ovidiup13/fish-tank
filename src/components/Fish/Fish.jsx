@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
+import dayjs from 'dayjs';
+import classnames from 'classnames';
+import { connect } from 'react-redux';
 
-import styles from './Fish.module.css';
-import { fishPropType } from '../../types';
 import FishImage from '../FishImage/FishImage';
 import FishLifetime from '../FishLifetime/FishLifetime';
-import dayjs from 'dayjs';
-import { DATE_FORMAT } from '../../constants';
-import classnames from 'classnames';
 
-const Fish = ({ fish }) => {
-  console.log('prop in fish', { fish });
-  const { id, avatar, name, species, dob, lifetime } = fish;
+import { fishPropType } from '../../types';
+import { DATE_FORMAT } from '../../constants';
+
+import styles from './Fish.module.css';
+import { removeFishAction } from '../../redux/actions';
+
+const Fish = ({ fish, removeFish }) => {
   const [alive, setAlive] = useState(true);
+
+  if (!fish) {
+    return null;
+  }
+
+  const { id, avatar, name, species, dob, lifetime } = fish;
 
   const className = classnames(styles.fish_container, {
     [styles.dead]: !alive,
@@ -41,6 +49,7 @@ const Fish = ({ fish }) => {
             onFlush={() => {
               console.log('Flushed fish. RIP', { id, name, species });
               setAlive(false);
+              setTimeout(() => removeFish(id), 5000);
             }}
           />
         )}
@@ -53,4 +62,8 @@ Fish.propTypes = {
   fish: fishPropType.isRequired,
 };
 
-export default Fish;
+const mapDispatchToProps = (dispatch) => ({
+  removeFish: (id) => dispatch(removeFishAction(id)),
+});
+
+export default connect(() => {}, mapDispatchToProps)(Fish);
