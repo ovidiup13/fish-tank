@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
       const { alive } = state;
       return {
         ...state,
-        alive: [...alive, fish],
+        alive: [fish, ...alive],
       };
     }
 
