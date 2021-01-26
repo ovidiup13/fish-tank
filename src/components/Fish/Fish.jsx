@@ -64,4 +64,4 @@ const mapDispatchToProps = (dispatch) => ({
   removeFish: (id) => dispatch(removeFishAction(id)),
 });
 
-export default connect(() => {}, mapDispatchToProps)(Fish);
+export default connect(() => ({}), mapDispatchToProps)(Fish);

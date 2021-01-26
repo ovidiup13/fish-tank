@@ -211,4 +211,4 @@ const mapDispatchToProps = (dispatch) => ({
   addFish: (fish) => dispatch(addFishAction(fish)),
 });
 
-export default connect(() => {}, mapDispatchToProps)(AddFish);
+export default connect(() => ({}), mapDispatchToProps)(AddFish);
