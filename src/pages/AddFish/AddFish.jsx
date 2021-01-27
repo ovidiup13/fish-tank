@@ -143,6 +143,7 @@ const AddFish = ({ addFish }) => {
                   className={`${styles.field} ${styles.lifetime_value}`}
                   type='number'
                   name='lifetime'
+                  min={1}
                 />
                 <Field
                   className={`${styles.field} ${styles.select}`}
